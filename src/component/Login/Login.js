@@ -10,6 +10,7 @@ const Login = () => {
 
     const { signInWithGoogle } = useAuth();
     const { processLogin } = useAuth();
+    const { saveUser } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -27,10 +28,13 @@ const Login = () => {
             processLogin(email, password)
                 .then(result => {
                     history.push(redirect_url);
+                    const user = result.user;
+                    saveUser(user.email, user.displayName, 'PUT')
                 })
                 .catch(error => {
                     setError('Username or Password is wrong');
                 })
+          
 
         }
         else {
@@ -41,6 +45,9 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 history.push(redirect_url);
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT');
+                console.log('user.email', user.email);
             })
     }
     return (

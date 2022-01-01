@@ -9,6 +9,10 @@ import Login from './component/Login/Login';
 import Private from './component/Private/Private'
 import PrivateRoute from './component/PrivareRoute/PrivateRoute';
 import Register from './component/Register/Register';
+import MovieDetails from './component/MovieDetails/MovieDetails';
+import Watchlist from './component/Watchlist/Watchlist';
+import AddMovies from './component/AddMovies/AddMovies';
+import MakeAdmin from './component/MakeAdmin/MakeAdmin';
 
 function App() {
   return (
@@ -23,8 +27,17 @@ function App() {
             <Route  path="/home">
               <Home></Home>
             </Route>
-            <PrivateRoute path="/private">
-              <Private></Private>
+            <PrivateRoute path="/movie/:mId">
+             <MovieDetails></MovieDetails>
+            </PrivateRoute>
+            <PrivateRoute path="/watchlist">
+              <Watchlist></Watchlist>
+            </PrivateRoute>
+            <PrivateRoute path="/add-movies">
+              <AddMovies></AddMovies>
+            </PrivateRoute>
+            <PrivateRoute path="/make-admin">
+              <MakeAdmin></MakeAdmin>
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>

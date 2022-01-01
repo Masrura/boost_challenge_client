@@ -9,6 +9,7 @@ const Register = () => {
 
     const { registerNewUser, setUserName, logOut } = useAuth();
     const { signInWithGoogle } = useAuth();
+    const { saveUser } = useAuth();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -49,6 +50,7 @@ const Register = () => {
                 .then(result => {
                     history.push('/login');
                     setUserName(name);
+                    saveUser(email, name, 'POST');
                     logOut();
 
                 })

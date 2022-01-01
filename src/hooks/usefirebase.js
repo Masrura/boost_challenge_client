@@ -7,6 +7,7 @@ const useFirebase = () => {
 
     const history = useHistory();
     const [user, setUser] = useState({});
+    const [admin, setAdmin] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
@@ -68,6 +69,25 @@ const useFirebase = () => {
             setIsLoading(false);
         })
     }, [])
+
+    useEffect(() => {
+        fetch(`https://damp-gorge-65015.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://damp-gorge-65015.herokuapp.com/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
     return {
         user,
         error,
@@ -77,6 +97,8 @@ const useFirebase = () => {
         processLogin,
         signInWithGoogle,
         logOut,
+        saveUser,
+        admin,
 
     }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-
+import Movies from '../Movies/Movies';
 const Home = () => {
-    return (
-        <div>
-          <h2>This is home</h2>  
-        </div>
-    );
-};
 
-export default Home;<h2>This is home</h2>
+  return (
+    <div className='container'>
+      <Movies></Movies>
+    </div>
+  );
+};
+export default Home;
