@@ -18,7 +18,7 @@ const AddMovies = () => {
     }
     const handleClick = () => {
         console.log('search text is', searchText);
-        fetch(`http://www.omdbapi.com/?t=${searchText}&apikey=9946028`)
+        fetch(`https://www.omdbapi.com/?t=${searchText}&apikey=9946028`)
             .then(res => res.json())
             .then(data => {
                 console.log('data is', data)

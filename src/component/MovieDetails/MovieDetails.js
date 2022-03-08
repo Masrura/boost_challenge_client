@@ -10,6 +10,8 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { mId } = useParams();
     const { user } = useAuth();
+    const {admin } = useAuth();
+   // console.log('rating',movie.imdbRating);
     useEffect(() => {
         fetch(`https://sleepy-stream-24451.herokuapp.com/movie/${mId}`)
             .then(res => res.json())
@@ -50,13 +52,17 @@ const MovieDetails = () => {
                         <ReactStars
                             count={5}
                             value={movie.imdbRating / 2}
+                           // value={4}
                             size={24}
                             edit={false}
                             activeColor="#ffd700"
                         />
                     </div>
                 </Card.Text>
-                <Button variant="success" onClick={handleClick}><b>Add To Watchlist </b>  <i className="far fa-lg fa-plus-square"></i></Button>{' '}
+                {
+                    !admin && <Button variant="success" onClick={handleClick}><b>Add To Watchlist </b>  <i className="far fa-lg fa-plus-square"></i></Button>
+                }
+                
             </Card.Body>
         </Card>
     );
