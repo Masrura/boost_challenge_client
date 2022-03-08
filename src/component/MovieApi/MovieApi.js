@@ -6,7 +6,7 @@ const MovieApi = (props) => {
     const location = props.location;
     const handleClick = () => {
        
-        fetch("https://damp-gorge-65015.herokuapp.com/movies", {
+        fetch("https://sleepy-stream-24451.herokuapp.com/movies", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(props.movie),

@@ -2,8 +2,10 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
+import { Button } from 'react-bootstrap';
 const Movie = (props) => {
     const { _id, Title, Plot, Poster, imdbRating } = props.movie;
+    const { handleDelete } = props;
     const location = props.location;
     console.log('I came from', location);
     return (
@@ -28,9 +30,21 @@ const Movie = (props) => {
                             /> <span style={{margin:'3%'}}>({imdbRating}/10)</span>
                         </div>
                        
+                        
                 </Card.Footer>
                 </Card>
-                </Link>
+            </Link>
+            {
+                location == 'watchlist' &&
+                <Button style={{ color: 'white' }}
+                    onClick={() => handleDelete(_id)}
+                    className="btn bg-danger p-2"
+                >
+                    Delete
+                </Button>
+
+
+            }
         </Col>
     );
 };

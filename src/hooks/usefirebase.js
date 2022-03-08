@@ -71,14 +71,14 @@ const useFirebase = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://damp-gorge-65015.herokuapp.com/users/${user.email}`)
+        fetch(`https://sleepy-stream-24451.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('https://damp-gorge-65015.herokuapp.com/users', {
+        fetch('https://sleepy-stream-24451.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

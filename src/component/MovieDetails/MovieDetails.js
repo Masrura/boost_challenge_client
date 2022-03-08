@@ -11,7 +11,7 @@ const MovieDetails = () => {
     const { mId } = useParams();
     const { user } = useAuth();
     useEffect(() => {
-        fetch(`https://damp-gorge-65015.herokuapp.com/movie/${mId}`)
+        fetch(`https://sleepy-stream-24451.herokuapp.com/movie/${mId}`)
             .then(res => res.json())
             .then(data => setMovie(data))
     }, [mId]);
@@ -20,7 +20,7 @@ const MovieDetails = () => {
             user: user.email,
             movieId: movie._id
         }
-        fetch("https://damp-gorge-65015.herokuapp.com/watchlist", {
+        fetch("https://sleepy-stream-24451.herokuapp.com/watchlist", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(movieTowatch),
